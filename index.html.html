@@ -23,62 +23,8 @@
           --red: #ef4444;
           --purple: #8b5cf6;
       }
-
-      // Gestion des spécialités selon la fonction
-      function updateSpecialtiesOptions(functionSelect) {
-          const specialtyCheckboxes = document.querySelectorAll('input[name="specialties"]');
-          const certificationCheckboxes = document.querySelectorAll('input[name="certifications"]');
-          const selectedFunction = functionSelect.value;
-
-          // Réinitialiser toutes les cases
-          specialtyCheckboxes.forEach(cb => cb.checked = false);
-          certificationCheckboxes.forEach(cb => cb.checked = false);
-
-          // Pré-cocher selon la fonction
-          const functionPresets = {
-              'chef_atelier': {
-                  specialties: ['mecanique_generale', 'hydraulique', 'diagnostic'],
-                  certifications: ['adr', 'controle_technique']
-              },
-              'mecanicien_senior': {
-                  specialties: ['mecanique_generale', 'diagnostic'],
-                  certifications: ['controle_technique']
-              },
-              'mecanicien': {
-                  specialties: ['mecanique_generale'],
-                  certifications: []
-              },
-              'electricien': {
-                  specialties: ['electricite', 'diagnostic'],
-                  certifications: ['habilitation_electrique', 'chronotachygraphe']
-              },
-              'frigoriste': {
-                  specialties: ['froid'],
-                  certifications: ['fluides_frigo']
-              },
-              'carrossier': {
-                  specialties: ['carrosserie', 'soudure'],
-                  certifications: ['soudure_certifiee']
-              },
-              'pneumaticien': {
-                  specialties: ['pneumatique'],
-                  certifications: []
-              }
-          };
-
-          const preset = functionPresets[selectedFunction];
-          if (preset) {
-              preset.specialties.forEach(specialty => {
-                  const checkbox = document.querySelector(`input[name="specialties"][value="${specialty}"]`);
-                  if (checkbox) checkbox.checked = true;
-              });
-
-              preset.certifications.forEach(cert => {
-                  const checkbox = document.querySelector(`input[name="certifications"][value="${cert}"]`);
-                  if (checkbox) checkbox.checked = true;
-              });
-          }
-      }
+      
+      
 
       /* Reset et styles de base */
       * {
@@ -3191,6 +3137,61 @@
             });
         }
       });
+      // Gestion des spécialités selon la fonction
+      function updateSpecialtiesOptions(functionSelect) {
+          const specialtyCheckboxes = document.querySelectorAll('input[name="specialties"]');
+          const certificationCheckboxes = document.querySelectorAll('input[name="certifications"]');
+          const selectedFunction = functionSelect.value;
+
+          // Réinitialiser toutes les cases
+          specialtyCheckboxes.forEach(cb => cb.checked = false);
+          certificationCheckboxes.forEach(cb => cb.checked = false);
+
+          // Pré-cocher selon la fonction
+          const functionPresets = {
+              'chef_atelier': {
+                  specialties: ['mecanique_generale', 'hydraulique', 'diagnostic'],
+                  certifications: ['adr', 'controle_technique']
+              },
+              'mecanicien_senior': {
+                  specialties: ['mecanique_generale', 'diagnostic'],
+                  certifications: ['controle_technique']
+              },
+              'mecanicien': {
+                  specialties: ['mecanique_generale'],
+                  certifications: []
+              },
+              'electricien': {
+                  specialties: ['electricite', 'diagnostic'],
+                  certifications: ['habilitation_electrique', 'chronotachygraphe']
+              },
+              'frigoriste': {
+                  specialties: ['froid'],
+                  certifications: ['fluides_frigo']
+              },
+              'carrossier': {
+                  specialties: ['carrosserie', 'soudure'],
+                  certifications: ['soudure_certifiee']
+              },
+              'pneumaticien': {
+                  specialties: ['pneumatique'],
+                  certifications: []
+              }
+          };
+
+          const preset = functionPresets[selectedFunction];
+          if (preset) {
+              preset.specialties.forEach(specialty => {
+                  const checkbox = document.querySelector(`input[name="specialties"][value="${specialty}"]`);
+                  if (checkbox) checkbox.checked = true;
+              });
+
+              preset.certifications.forEach(cert => {
+                  const checkbox = document.querySelector(`input[name="certifications"][value="${cert}"]`);
+                  if (checkbox) checkbox.checked = true;
+              });
+          }
+      }
     </script>
   </body>
 </html>
